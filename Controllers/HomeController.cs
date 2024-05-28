@@ -15,9 +15,9 @@ namespace frontend.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(Result model)
         {
-            return View();
+            return View(model);
         }
 
         public IActionResult Privacy()

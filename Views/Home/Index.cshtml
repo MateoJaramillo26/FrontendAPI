@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model frontend.Models.Result
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,37 +23,34 @@
         <h1>Consultas SRI/ANT</h1>
     </header>
     <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="cedula">Ingresa tu número de cédula:</label>
-                    <input type="text" id="cedula" class="form-control" placeholder="Número de cédula">
-                </div>
-                <div class="text-center">
-                    <button type="button" class="btn btn-primary mt-2" onclick="mostrarInfo()">Consultar</button>
+
+        @if(Model != null)
+        {
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <form asp-action="MakeARequest" asp-controller="Request" method="post">
+                        <div class="form-group">
+                            <label for="id">Ingrese su cédula:</label>
+                            <input type="text" class="form-control" id="id" name="id" value="@Model.Id" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+
+
+                    <div class="form-group">
+                        <label for="SRIContributor">Eres contribuyente al SRI:</label>
+                        <input type="text" id="SRIContributor" class="form-control" value="@Model.IsContributor" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="ANTLicencePoints">Tus puntos totales según la ANT son:</label>
+                        <input type="text" id="ANTLicencePoints" class="form-control" value="@Model.LicencePoints" readonly>
+                    </div>
+
                 </div>
             </div>
-        </div>
-        <div id="infoSection" class="row justify-content-center mt-4" style="display: none;">
-            <div class="col-md-6 left-content">
-                <div class="form-group">
-                    <label for="contribuyenteSRI">Contribuyente SRI</label>
-                    <input type="text" id="contribuyenteSRI" class="form-control" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="puntosANT">Tus puntos Totales según la ANT Son:</label>
-                    <input type="text" id="puntosANT" class="form-control" readonly>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-        function mostrarInfo() {
-            document.getElementById('infoSection').style.display = 'flex';
         }
-    </script>
+
+    </div>
 </body>
 </html>
