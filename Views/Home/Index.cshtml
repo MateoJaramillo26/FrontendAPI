@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page - frontend</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/frontend.styles.css" asp-append-version="true" />
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3">
+        <h1>Consultas SRI/ANT</h1>
+    </header>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="cedula">Ingresa tu número de cédula:</label>
+                    <input type="text" id="cedula" class="form-control" placeholder="Número de cédula">
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary mt-2" onclick="mostrarInfo()">Consultar</button>
+                </div>
+            </div>
+        </div>
+        <div id="infoSection" class="row justify-content-center mt-4" style="display: none;">
+            <div class="col-md-6 left-content">
+                <div class="form-group">
+                    <label for="contribuyenteSRI">Contribuyente SRI</label>
+                    <input type="text" id="contribuyenteSRI" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="puntosANT">Tus puntos Totales según la ANT Son:</label>
+                    <input type="text" id="puntosANT" class="form-control" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function mostrarInfo() {
+            document.getElementById('infoSection').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
