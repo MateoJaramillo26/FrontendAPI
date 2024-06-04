@@ -28,7 +28,7 @@ namespace frontend.Controllers
                 var consulta = new Result()
                 {
                     Id = id,
-                    IsContributor = sriData.IsContributor,
+                    IsContributor = sriData.IsContributor ? "Sí" : "No",
                     LicencePoints = antData.LicencePoints
                 };
                 return RedirectToAction("Index", "Home", consulta);

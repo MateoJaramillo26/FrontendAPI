@@ -2,7 +2,6 @@
 {
     public class SRIData
     {
-        private readonly bool _isContributor;
-        public string IsContributor { get => _isContributor ? "Sí" : "No"; }
+        public bool IsContributor { get; set;}
     }
 }
